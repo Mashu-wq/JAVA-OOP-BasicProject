@@ -4,7 +4,7 @@ class Email{
      private String firstName;
      private String lastName;
     private String departmentName;
-    private int mailBoxCapacity;
+    private int mailBoxCapacity = 50;
     private String alternateEmail;
     private String password;
     private String email;
@@ -14,17 +14,17 @@ class Email{
     public Email(String firstName, String lastName){
         this.firstName = firstName;
         this.lastName = lastName;
-        System.out.println("Email created: " + this.firstName + " " + this.lastName);
+        // System.out.println("Email created: " + this.firstName + " " + this.lastName);
 
         this.departmentName = setDepartment();
-        System.out.println("Department: " + this.departmentName);
+       
 
         //call a method that returns a random password
         this.password = randomPassword(defaultPasswordLength);
         System.out.println("Your password is: " + this.password);
 
         email = firstName.toLowerCase() + "." + lastName.toLowerCase() + '@' + departmentName + "." + company_suffix;
-        System.out.println("Your email is: " + email);
+        // System.out.println("Your email is: " + email);
         
     }
     private String setDepartment(){
@@ -53,6 +53,29 @@ class Email{
             password[i] = passwordSet.charAt(rand);
         }
         return new String(password);
+    }
+
+    //set the mailbox capacity
+    public void setMailBoxCapacity(int capacity){
+        this.mailBoxCapacity = capacity;
+    }
+    public void setAlternateEmail(String altEmail){
+        this.alternateEmail = altEmail;
+    }
+    public void changePassword(String password){
+        this.password = password;
+    }
+    public int getMailBoxCapacity(){
+        return mailBoxCapacity;
+    }
+    public String getAlternateEmail(){
+        return alternateEmail;
+    }
+    public String getPassword(){
+        return password;
+    }
+    public String showInfo(){
+        return "Display Name: " + firstName + " " + lastName + "\nCompany Email: " + email + "\nMailBox Capacity: " + mailBoxCapacity + "mb";
     }
     
 } 
